@@ -128,18 +128,38 @@ This will create a dataset named `trips` in the `us-central1` region.
 
 ---
 
-## Create a Persistent History Server
+## Create a Persistent History Server (Optional but Recommended for Debugging)
 
-The Spark UI provides insights into Spark batch workloads. You can create a single-node Dataproc persistent history server that hosts the Spark UI and provides access to the history of completed Dataproc Serverless workloads.
+Dataproc Serverless does **not expose the Spark UI by default**. If you want to **inspect execution details** of your Spark jobs — such as stages, tasks, shuffle operations, and memory usage — you can create a **single-node Persistent History Server (PHS)**.
+
+This is **optional** for simple use cases or labs where you just want to verify job success/failure, but it's **recommended** when you need deeper debugging or performance insights.
+
+To set it up:
 
 ```bash
 PHS_CLUSTER_NAME=my_phs_cluster
 
- gcloud dataproc clusters create ${PHS_CLUSTER_NAME} \
-   --region=${REGION} \
-   --single-node \
-   --enable-component-gateway \
-   --properties=spark:spark.history.fs.logDirectory=gs://${BUCKET}/phs/*/spark-job-history
+gcloud dataproc clusters create ${PHS_CLUSTER_NAME} \
+  --region=${REGION} \
+  --single-node \
+  --enable-component-gateway \
+  --properties=spark:spark.history.fs.logDirectory=gs://${BUCKET}/phs/*/spark-job-history
+```
+
+Once created, the Spark UI will be available via the [Dataproc Clusters > Web Interfaces](https://console.cloud.google.com/dataproc/clusters) section in the Cloud Console.
+
+**Note:** If you skip this step, you can still check basic logs using:
+
+```bash
+gcloud dataproc batches describe ${BATCH_NAME} --region=${REGION}
+```
+
+Then look for the `driverOutputResourceUri` field to find logs in your GCS bucket.
+
+Set a name for your batch workload:
+
+```bash
+BATCH_NAME=spark-etl-pipeline
 ```
 
 ---
