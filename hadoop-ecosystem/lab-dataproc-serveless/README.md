@@ -109,6 +109,8 @@ gcloud compute networks subnets describe default \
 ### 9. Specify or create a Cloud Storage bucket to store the assets that are created in this tutorial
 
 ```bash
+export PROJECT_ID=$(gcloud info --format='value(config.project)')
+
 export BUCKET=${PROJECT_ID}-gcs
 
 gcloud storage buckets create gs://${BUCKET} --location=${REGION}
