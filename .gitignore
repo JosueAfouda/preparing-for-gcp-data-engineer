@@ -197,3 +197,4 @@ cython_debug/
 hadoop-ecosystem/lab-running-spark-on-dataproc/sparktobq/yellow_tripdata_2023-01.parquet
 
 hadoop-ecosystem/lab-running-spark-on-dataproc/sparktobq/cleaned_trips/
+hadoop-ecosystem/lab-dataproc-serveless/yellow_tripdata_2023-01.parquet
