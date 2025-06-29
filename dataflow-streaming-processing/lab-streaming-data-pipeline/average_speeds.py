@@ -8,11 +8,21 @@ import json
 from datetime import datetime
 
 def parse_message(element):
-    # Ici tu décodes le message JSON et tu formates ce que tu veux
-    record = json.loads(element)
-    key = f"{record['sensorId']}"
-    speed = float(record['speed'])
+    parts = element.split(',')
+    # Exemple parts : ['2008-11-01 02:20:00', '32.749679', '-117.155519', '163', 'S', '2', '63.2']
+    timestamp = parts[0]
+    latitude = float(parts[1])
+    longitude = float(parts[2])
+    highway = parts[3]
+    direction = parts[4]
+    lane = int(parts[5])
+    speed = float(parts[6])
+
+    # clé pour le groupement (tu choisis ce qui fait sens, ici par position + voie par ex)
+    key = f"{latitude}_{longitude}_{highway}_{direction}_{lane}"
+
     return (key, speed)
+
 
 def to_bq_row(element):
     key, avg_speed = element

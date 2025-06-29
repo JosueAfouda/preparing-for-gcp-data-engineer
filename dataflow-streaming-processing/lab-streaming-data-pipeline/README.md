@@ -1,4 +1,4 @@
-# Lab: Streaming Data Processing: Streaming Data Pipelines 
+# Lab: How to Build a Real-Time Data Pipeline with Pub/Sub, Dataflow and BigQuery on Google Cloud?
 
 ## Overview
 
@@ -10,13 +10,22 @@ In this lab, you will use Dataflow to collect traffic events from simulated traf
 
 ---
 
+Voici la section **🎯 Objectives** du README, rédigée en anglais :
+
+---
+
 ## 🎯 Objectives
 
-In this lab, you will perform the following tasks:
+By the end of this lab, you will be able to:
 
-* Create a Pub/Sub topic and subscription
-* Simulate your traffic sensor data into Pub/Sub
-* 
+* ✅ Create a **Cloud Pub/Sub topic and subscription** to ingest streaming data.
+* ✅ Simulate **real-time sensor data** publishing using a Python script.
+* ✅ Deploy an **Apache Beam pipeline** on **Cloud Dataflow** to process the streaming data.
+* ✅ Write processed output to a **BigQuery** table for further analysis.
+* ✅ Verify that data flows correctly from ingestion to final storage.
+* ✅ Understand the key components of a **serverless streaming data pipeline** on Google Cloud.
+
+This lab gives you hands-on experience with the core services used in real-time data processing and prepares you for production-grade use cases involving telemetry, IoT, and traffic analysis.
 
 ---
 
@@ -117,17 +126,12 @@ Then download the historical traffic data file:
 gsutil cp gs://cloud-training-demos/sandiego/sensor_obs2008.csv.gz .
 ```
 
-Create a **service account** with the following roles:
+Confirm that the default compute Service Account {project-number}-compute@developer.gserviceaccount.com is present and has the editor role assigned. 
 
-* **Owner**
-* **Editor**
-* **Pub/Sub Editor**
-* **Dataflow Developer**
-
-Generate a **JSON key** for that service account and export it as an environment variable for authentication:
+Generate a **JSON key** for the default service account (  {project-number}-compute@developer.gserviceaccount.com) and export it as an environment variable for authentication:
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=preparation-data-eng-193f7a30722f.json
+export GOOGLE_APPLICATION_CREDENTIALS=key.json
 ```
 
 You can now simulate streaming traffic sensor data with:
@@ -215,7 +219,7 @@ touch average_speeds.py
 Then authenticate with your service account:
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=preparation-data-eng-193f7a30722f.json
+export GOOGLE_APPLICATION_CREDENTIALS=key.json
 ```
 
 Finally, launch the pipeline with:
@@ -312,3 +316,53 @@ The data is written to BigQuery using this schema:
 This pipeline provides a scalable way to monitor traffic speed trends in near real-time using Google Cloud's Pub/Sub, Dataflow, and BigQuery.
 
 ---
+
+## Cleanup
+
+Once you have completed the lab and no longer need the resources, it is **strongly recommended** to delete the project to avoid incurring unnecessary charges.
+
+> ⚠️ **Warning**: This action is irreversible. Deleting the project will permanently remove all resources: Pub/Sub topics, Dataflow jobs, BigQuery datasets, Cloud Storage buckets, service accounts, etc.
+
+To delete the project, run:
+
+```bash
+gcloud projects delete $PROJECT_ID
+```
+
+You can verify that the project has been marked for deletion by listing your active projects:
+
+```bash
+gcloud projects list
+```
+
+If your project no longer appears, the deletion process has been successfully initiated.
+
+This final step ensures that your Google Cloud account remains clean and cost-free after completing the streaming data processing pipeline lab.
+
+---
+
+Voici la section **Conclusion** du README, rédigée en anglais :
+
+---
+
+## Conclusion
+
+In this lab, you built a complete real-time data processing pipeline on Google Cloud using the following components:
+
+* **Cloud Pub/Sub** to publish and ingest simulated traffic sensor data.
+* **Apache Beam with Dataflow** to process streaming data and compute average speeds.
+* **BigQuery** to store and analyze the processed results.
+
+You also learned how to:
+
+* Simulate real-time data ingestion using a Python script.
+* Deploy a streaming pipeline using DataflowRunner.
+* Verify data flow through Pub/Sub subscriptions.
+* Write pipeline outputs to a BigQuery table for further analysis.
+
+This hands-on workflow demonstrates how to build scalable and serverless data streaming architectures with minimal operational overhead. It lays the foundation for more advanced pipelines involving windowing, aggregations, and anomaly detection in real-time.
+
+> ✅ You are now ready to explore more complex streaming use cases on GCP!
+
+---
+
