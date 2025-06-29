@@ -1,16 +1,29 @@
-# Lab: A Simple Dataflow Pipeline (Python)
+# Lab: Build and Run a Simple Dataflow Pipeline with Python
 
 ## Overview
 
-Dataflow is ...
+**Dataflow** is Google Cloud’s fully managed service for executing Apache Beam pipelines. It enables scalable and efficient batch and stream data processing.
 
-In this lab, you will open a Dataflow project, use pipeline filtering, and execute the pipeline locally and on the cloud.
+In this hands-on lab, you'll learn how to:
 
-The goal of this lab is to become familiar with the structure of a Dataflow project and learn how to execute a Dataflow pipeline.
+* Create and understand the structure of a Dataflow pipeline project.
+* Implement a simple data filtering pipeline using Apache Beam (in Python).
+* Run the pipeline **locally** for testing.
+* Deploy and execute the same pipeline on **Google Cloud Dataflow** for production use.
+
+This lab will help you gain practical experience with both local development and cloud deployment of data processing jobs using Beam and Dataflow.
 
 ---
 
 ## 🎯 Objectives
+
+By the end of this lab, you will be able to:
+
+* Build a basic Apache Beam pipeline in Python.
+* Execute the pipeline locally using the DirectRunner.
+* Configure and run the same pipeline on Dataflow using the DataflowRunner.
+* Use Cloud Storage as input/output for Dataflow pipelines.
+* Clean up resources after execution.
 
 ---
 
@@ -186,10 +199,6 @@ Charlie,35,Paris
 ```
 
 * The output is a plain text file, with one CSV-formatted line per matching row.
-
----
-
-Here’s the next section of your README in English, clearly explaining the purpose and changes needed to run the pipeline on **Google Cloud Dataflow**:
 
 ---
 
@@ -419,6 +428,17 @@ gsutil rm -r gs://${BUCKET}
 
 ---
 
+
+## Conclusion
+
+In this lab, you learned how to build a simple Apache Beam pipeline that filters lines from a CSV file based on a keyword. You:
+
+* Built and executed the pipeline **locally** using the DirectRunner.
+* Adapted the pipeline to run on **Google Cloud Dataflow**, using a Cloud Storage bucket for input/output and setting the necessary pipeline options.
+* Deployed the pipeline to Dataflow and verified the filtered output in your bucket.
+* Cleaned up cloud resources to avoid unnecessary costs.
+
+This hands-on example provides a strong foundation for developing more advanced data processing pipelines using Apache Beam and Dataflow, and prepares you for real-world batch data engineering tasks on Google Cloud.
 
 
 
