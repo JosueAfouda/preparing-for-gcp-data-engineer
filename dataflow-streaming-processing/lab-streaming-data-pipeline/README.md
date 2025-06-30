@@ -10,10 +10,6 @@ In this lab, you will use Dataflow to collect traffic events from simulated traf
 
 ---
 
-Voici la section **🎯 Objectives** du README, rédigée en anglais :
-
----
-
 ## 🎯 Objectives
 
 By the end of this lab, you will be able to:
@@ -338,10 +334,6 @@ gcloud projects list
 If your project no longer appears, the deletion process has been successfully initiated.
 
 This final step ensures that your Google Cloud account remains clean and cost-free after completing the streaming data processing pipeline lab.
-
----
-
-Voici la section **Conclusion** du README, rédigée en anglais :
 
 ---
 
