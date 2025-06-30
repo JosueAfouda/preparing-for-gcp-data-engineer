@@ -202,3 +202,4 @@ dataflow-batch-processing/lab-simple-dataflow-pipeline/preparing-for-gcp-de-d1b3
 dataflow-streaming-processing/lab-publish-streaming-data-into-pubsub/preparation-data-eng-193f7a30722f.json
 dataflow-streaming-processing/lab-streaming-data-pipeline/*.json
 dataflow-streaming-processing/lab-streaming-data-pipeline/sensor_obs2008.csv.gz
+machine-learning/nlp-api-classify-text/key.json
