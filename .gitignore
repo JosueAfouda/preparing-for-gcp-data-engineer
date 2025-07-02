@@ -204,4 +204,4 @@ dataflow-streaming-processing/lab-streaming-data-pipeline/*.json
 dataflow-streaming-processing/lab-streaming-data-pipeline/sensor_obs2008.csv.gz
 machine-learning/lab-nlp-api-classify-text/key.json
 machine-learning/lab-nlp-api-classify-text/bbc-fulltext/
-machine-learning/lab-bigquery-in-jupyterlab/key.json
+machine-learning/lab-predict-bike-trip-duration/=4.2.0
