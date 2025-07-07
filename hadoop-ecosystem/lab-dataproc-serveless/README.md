@@ -188,6 +188,13 @@ Set a name for your batch workload:
 ```bash
 BATCH_NAME=spark-etl-pipeline
 ```
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:$SERVICE_ACCOUNT_EMAIL \
+    --role roles/dataproc.worker
+
+
+
+
 
 ```bash
 gcloud dataproc batches submit pyspark serveless_dataproc_gcs_to_bq.py \
